@@ -1,104 +1,37 @@
-from flask import Flask
+from flask import Flask, render_template, Response
+from flask_restful import Resource, Api
 
 app = Flask(__name__)
+api = Api(app)
 
-top_of_page = """<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+class Topics(Resource):
 
+    def post(self):
+        return "TODO"
 
-<style>
-    body{
-        margin:0;
-        font-family:Arial, Helvetica, sans-serif;
-    }
-    #topbar{
-        height:50px;
-        width: auto;
-        background-color: #222222;
-        color: #999999;
-        text-align: center;
-    }
-    #topbar p{
-        padding: 15px;
-    }
-    #logodiv{
-        float:left;
-        height: 50px;
-        width: 50px;
-        border-right: 1px grey solid;
-    }
-    #navbar{
-        height:50px;
-        width: auto;
-        color: #999999;
-    }
-    #navbar table{
-        text-align: center;
-    }
-    #navbar td{
-        padding: 15px;
-        border-left: 1px grey solid;
-        background-color: #999999;
-    }
-    a:active  {background-color:#4aa3df; text-decoration:underline}
-</style>
+    def get(self, subject, level):
 
-<title>Maarifa - Knowledge</title>
-</head>
+        topname = subject+" at "+str(level)
 
-<body>
+        return Response((render_template("content.html", topicname=topname)), mimetype="text/html")
 
-    <div id="container">
-        <div id="topbar">
-            <div id="logodiv">
-                <a href="./"><img src="images/BBC Logo.png"/></a>
-       		</div>
-            <p>World-class Knowledge, Everywhere</p>
-        </div>
-
-        <div id="navbar">
-            <table style="width: 100%">
-                <tr>
-                    <td><a href="./Eng">English</a></td>
-                    <td><a href="./Math">Math</a></td>
-                    <td><a href="./Sci">Science</a></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-    <div id="content">"""
-
-bottom_of_page = """    </div>
-
-</body>
-</html>"""
+api.add_resource(Topics, '/sub/', '/sub/<string:subject>/<int:level>')
 
 @app.route('/')
 def index():
-    page = top_of_page + "Home Page stuff" + bottom_of_page
+    return render_template("index.html")
 
-    return page
-
-@app.route('/Math')
+@app.route('/sub/math')
 def math():
-    page = top_of_page + "Math Page stuff" + bottom_of_page
+    return render_template("levelchoice.html", subject="Math", sublink="sub/math")
 
-    return page
-
-@app.route('/Eng')
+@app.route('/sub/eng')
 def eng():
-    page = top_of_page + "English Page stuff" + bottom_of_page
+    return render_template("levelchoice.html", subject="English", sublink="sub/eng")
 
-    return page
-
-@app.route('/Sci')
+@app.route('/sub/sci')
 def sci():
-    page = top_of_page + "Science Page stuff" + bottom_of_page
-
-    return page
+    return render_template("levelchoice.html", subject="Science", sublink="sub/sci")
 
 if __name__ == '__main__':
     app.config['TRAP_BAD_REQUEST_ERRORS'] = True
