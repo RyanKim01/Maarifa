@@ -10,7 +10,7 @@
         font-family:Arial, Helvetica, sans-serif;
     }
     #topbar{
-        height:50px;
+        height:60px;
         width: auto;
         background-color: #222222;
         color: #999999;
@@ -61,18 +61,15 @@
 
     <div id="container">
         <div id="topbar">
-            <div id="logodiv">
-                <a href="../"><img src="images/BBC Logo.png"/></a>
-       		</div>
-            <p>World-class Knowledge, Everywhere</p>
+            <a href="../"><img style="height: 60px" src="http://unathichonco.com/banner.jpg"/></a>
         </div>
 
         <div id="navbar">
             <table style="width: 100%">
                 <tr>
-                    <td><a href="../sub/eng">English</a></td>
-                    <td><a href="../sub/math">Math</a></td>
-                    <td><a href="../sub/sci">Science</a></td>
+                    <td><a href="../English">English</a></td>
+                    <td><a href="../Math">Math</a></td>
+                    <td><a href="../Science">Science</a></td>
                 </tr>
             </table>
         </div>
@@ -84,17 +81,17 @@
 
         <table style="width: 100%" id="leveltable">
             <tr>
-                <td><a href="../{{sublink}}/{{level}}/{{topiclink[1]}}">{{topics[1]}}</a></td>
-                <td><a href="../{{sublink}}/{{level}}/{{topiclink[2]}}">{{topics[2]}}</a></td>
+                <td><a href="../{{subject}}/{{level}}/{{topics[0]['lesson_title']}}">{{topics[0]["lesson_title"]}}</a></td>
+                <td><a href="../{{subject}}/{{level}}/{{topics[1]['lesson_title']}}">{{topics[1]["lesson_title"]}}</a></td>
 
             </tr>
             <tr>
-                <td><a href="../{{sublink}}/{{level}}/{{topiclink[3]}}">{{topics[3]}}</a></td>
-                <td><a href="../{{sublink}}/{{level}}/{{topiclink[4]}}">{{topics[4]}}</a></td>
+                <td><a href="../{{subject}}/{{level}}/{{topics[2]['lesson_title']}}">{{topics[2]["lesson_title"]}}</a></td>
+                <td><a href="../{{subject}}/{{level}}/{{topics[3]['lesson_title']}}">{{topics[3]["lesson_title"]}}</a></td>
             </tr>
             <tr>
-                <td><a href="../{{sublink}}/{{level}}/{{topiclink[5]}}">{{topics[5]}}</a></td>
-                <td><a href="../{{sublink}}/{{level}}/{{topiclink[6]}}">{{topics[6]}}</a></td>
+                <td><a href="../{{subject}}/{{level}}/{{topics[4]['lesson_title']}}">{{topics[4]["lesson_title"]}}</a></td>
+                <td><a href="../{{subject}}/{{level}}/{{topics[5]['lesson_title']}}">{{topics[5]["lesson_title"]}}</a></td>
             </tr>
         </table>
 
