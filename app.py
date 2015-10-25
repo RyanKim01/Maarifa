@@ -41,7 +41,8 @@ class Lessons(Resource):
             return Response((render_template("topics.html", subject=subject, level=level, topics=lesson_list)), mimetype="text/html")
         else:
             content = request_lesson(subject, level, title)
-            return Response((render_template("content.html", lessontitle=title, content=content)), mimetype="text/html")
+            # return Response((render_template("content.html", lessontitle=title, content=content)), mimetype="text/html")
+            return Response((render_template("addition.html", lessontitle=title)), mimetype="text/html")
 
 
 api.add_resource(Lessons, '/<string:subject>/<int:level>', '/<string:subject>/<int:level>/<string:title>')
